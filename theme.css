@@ -1,0 +1,138 @@
+body {
+	/* Акцентный цвет по умолчанию */
+	--accent-h: 205;
+	--accent-s: 100%;
+	--accent-l: 50%;
+
+	/* Настройки заголовков */
+	--h1-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	
+	/* Эксперимент не особо удался */
+	/* --h2-color: hsl(min(255, calc(var(--accent-h) - 10)), var(--accent-s), var(--accent-l));
+	--h3-color: hsl(min(255, calc(var(--accent-h) - 20)), var(--accent-s), var(--accent-l));
+	--h4-color: hsl(min(255, calc(var(--accent-h) - 40)), var(--accent-s), var(--accent-l));
+	--h5-color: hsl(min(255, calc(var(--accent-h) - 80)), var(--accent-s), var(--accent-l));
+	--h6-color: hsl(min(255, calc(var(--accent-h) - 160)), var(--accent-s), var(--accent-l)); */
+
+
+	/* Цитаты которые начинаются с символа `>` */
+	--blockquote-background-color: hsla(
+		var(--accent-h),
+		var(--accent-s),
+		var(--accent-l),
+		0.2
+	);
+	--blockquote-border-color: hsl(
+		var(--accent-h),
+		var(--accent-s),
+		var(--accent-l)
+	);
+	--blockquote-font-style: italic;
+	--blockquote-border-thickness: 4px;
+
+	/* Выделения через `==` */
+	--text-highlight-bg: hsla(
+		var(--accent-h),
+		var(--accent-s),
+		var(--accent-l),
+		0.3
+	);
+
+	/* Встраиание вложений и заметок */
+	--embed-font-style: italic;
+	--embed-padding: 0 25px;
+	--embed-background: hsla(
+		var(--accent-h),
+		var(--accent-s),
+		var(--accent-l),
+		0.025
+	);
+
+	/* Шрифт */
+	--bold-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	--italic-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	/* -------------------------------------------
+	Для Huawei Nova 11 почему то надо использовать 
+	--font-semibold или вес 600 для жирного текста
+	------------------------------------------- */
+	--bold-modifier: var(--font-semibold);
+
+	/* Цвет каретки для текста */
+	--caret-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+
+	/* Настройки таблиц */
+	--table-background: hsla(
+		var(--accent-h),
+		var(--accent-s),
+		var(--accent-l),
+		0
+	);
+	--table-border-width: 1px;
+	--table-header-color: hsla(
+		var(--accent-h),
+		var(--accent-s),
+		var(--accent-l),
+		1
+	);
+
+	/* Горизонтальная линия */
+	--hr-thickness: 2px;
+}
+
+/* Кастомизация иконок файлов */
+/* PDF files */
+.nav-file-title[data-path$=".pdf"] .nav-file-tag {
+	background-color: #ef5350;
+	color: white;
+}
+
+/* Какой-то календарь, даже не понятно для чего он нужен */
+#calendar-container {
+	--color-background-heading: transparent;
+	--color-background-day: transparent;
+	--color-background-weeknum: transparent;
+	--color-background-weekend: transparent;
+
+	--color-dot: var(--text-muted);
+	--color-arrow: var(--text-muted);
+	--color-button: var(--text-muted);
+
+	--color-text-title: var(--text-normal);
+	--color-text-heading: var(--text-muted);
+	--color-text-day: var(--text-normal);
+	--color-text-today: var(--interactive-accent);
+	--color-text-weeknum: var(--text-muted);
+}
+
+.workspace-tab-header.is-active::before,
+.workspace-tab-header.is-active::after {
+	display: none;
+}
+
+svg * {
+	stroke-linecap: square;
+	stroke-linejoin: miter;
+	/* ---------------------------------------
+	Скругления почему то плохо работают и все 
+	SVG имеют квадратный дизайн с этими фичами 
+	--------------------------------------- */
+	/* rx: 0; */
+	/* ry: 0; */
+}
+
+img {
+	/* Решил убрать скругления т.к. не приносят пользы вовсе */
+	border-radius: 0px; 
+}
+
+.menu {
+	padding: var(--size-2-1);
+}
+
+.menu-item {
+	padding: var(--size-4-1) var(--size-4-2);
+}
+
+.menu-separator {
+	margin: var(--size-2-1) calc(var(--size-2-1) * -1);
+}
