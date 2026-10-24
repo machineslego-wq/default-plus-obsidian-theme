@@ -1,92 +1,159 @@
+/* =========================================
+   DEFAULT PLUS (HSL Architecture)
+   ========================================= */
+
 body {
-	/* Акцентный цвет по умолчанию */
+	/* =========================================
+	   БАЗОВЫЙ АКЦЕНТ (Меняй только эти 3 цифры)
+	   ========================================= */
 	--accent-h: 205;
 	--accent-s: 100%;
 	--accent-l: 50%;
 
-	/* Настройки заголовков */
+	/* =========================================
+	   ЗАГОЛОВКИ (Градация оттенков + свечение)
+	   ========================================= */
 	--h1-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	
-	/* Эксперимент не особо удался */
-	/* --h2-color: hsl(min(255, calc(var(--accent-h) - 10)), var(--accent-s), var(--accent-l));
-	--h3-color: hsl(min(255, calc(var(--accent-h) - 20)), var(--accent-s), var(--accent-l));
-	--h4-color: hsl(min(255, calc(var(--accent-h) - 40)), var(--accent-s), var(--accent-l));
-	--h5-color: hsl(min(255, calc(var(--accent-h) - 80)), var(--accent-s), var(--accent-l));
-	--h6-color: hsl(min(255, calc(var(--accent-h) - 160)), var(--accent-s), var(--accent-l)); */
+	/* Сдвигаем Hue (оттенок) для различимости уровней */
+	--h2-color: hsl(calc(var(--accent-h) + 15), var(--accent-s), calc(var(--accent-l) + 5%));
+	--h3-color: hsl(calc(var(--accent-h) + 30), var(--accent-s), calc(var(--accent-l) + 10%));
+	--h4-color: hsl(calc(var(--accent-h) + 45), var(--accent-s), calc(var(--accent-l) + 15%));
+	--h5-color: hsl(calc(var(--accent-h) + 60), var(--accent-s), calc(var(--accent-l) + 20%));
+	--h6-color: hsl(calc(var(--accent-h) + 75), var(--accent-s), calc(var(--accent-l) + 25%));
 
 
-	/* Цитаты которые начинаются с символа `>` */
-	--blockquote-background-color: hsla(
-		var(--accent-h),
-		var(--accent-s),
-		var(--accent-l),
-		0.2
-	);
-	--blockquote-border-color: hsl(
-		var(--accent-h),
-		var(--accent-s),
-		var(--accent-l)
-	);
+	/* =========================================
+	   БЛОКИ И ЦИТАТЫ
+	   ========================================= */
+	/* Цитаты, которые начинаются с символа `>` */
+	--blockquote-background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.15);
+	--blockquote-border-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--blockquote-font-style: italic;
 	--blockquote-border-thickness: 4px;
 
 	/* Выделения через `==` */
-	--text-highlight-bg: hsla(
-		var(--accent-h),
-		var(--accent-s),
-		var(--accent-l),
-		0.3
-	);
+	--text-highlight-bg: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
 
-	/* Встраиание вложений и заметок */
+	/* Встраивание вложений и заметок */
 	--embed-font-style: italic;
 	--embed-padding: 0 25px;
-	--embed-background: hsla(
-		var(--accent-h),
-		var(--accent-s),
-		var(--accent-l),
-		0.025
-	);
+	--embed-background: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.025);
 
-	/* Шрифт */
+
+	/* =========================================
+	   ТИПОГРАФИЯ (С акцентом)
+	   ========================================= */
+	/* Жирный использует акцент */
 	--bold-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-	--italic-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-	/* -------------------------------------------
-	Для Huawei Nova 11 почему то надо использовать 
-	--font-semibold или вес 600 для жирного текста
-	------------------------------------------- */
+	
+	/* Курсив использует акцент, но чуть светлее, чтобы отличаться от жирного */
+	--italic-color: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 15%));
+	
+	/* Жирный курсив (***текст***) — делает акцент еще более насыщенным */
+	--bold-italic-color: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 10%));
+	
+	/* Фикс для Huawei Nova 11 (и некоторых Android) */
 	--bold-modifier: var(--font-semibold);
 
 	/* Цвет каретки для текста */
 	--caret-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 
-	/* Настройки таблиц */
-	--table-background: hsla(
-		var(--accent-h),
-		var(--accent-s),
-		var(--accent-l),
-		0
-	);
+	/* =========================================
+	   ТАБЛИЦЫ И ЛИНИИ
+	   ========================================= */
+	--table-background: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0);
 	--table-border-width: 1px;
-	--table-header-color: hsla(
-		var(--accent-h),
-		var(--accent-s),
-		var(--accent-l),
-		1
-	);
+	--table-header-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 
 	/* Горизонтальная линия */
 	--hr-thickness: 2px;
 }
 
-/* Кастомизация иконок файлов */
-/* PDF files */
+/* =========================================
+   СВЕТЛАЯ ТЕМА (Корректировка под белый фон)
+   ========================================= */
+body.theme-light {
+	/* Опускаем светлоту, чтобы текст читался на белом */
+	--accent-l: 40%;
+	/* Цитаты делаем чуть плотнее */
+	--blockquote-background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.1);
+	/* Выделения делаем ярче */
+	--text-highlight-bg: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.4);
+}
+
+/* =========================================
+   ССЫЛКИ И ИНЛАЙН-КОД (Подхватывают акцент)
+   ========================================= */
+a.internal-link,
+a.external-link,
+.cm-s-obsidian span.cm-link,
+.cm-s-obsidian span.cm-url {
+	color: hsl(var(--accent-h), var(--accent-s), var(--accent-l)) !important;
+	text-decoration: underline !important;
+	text-decoration-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5) !important;
+	text-underline-offset: 3px;
+	transition: all 0.2s ease;
+}
+
+a.internal-link:hover,
+a.external-link:hover {
+	text-decoration-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l)) !important;
+	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.1);
+}
+
+/* Инлайн-код (`code`) */
+code {
+	color: hsl(var(--accent-h), var(--accent-s), var(--accent-l)) !important;
+	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.1) !important;
+	border-radius: 4px;
+	padding: 2px 4px;
+	font-family: var(--font-monospace);
+}
+
+/* =========================================
+   CALLOUTS (Подхватывают акцент для note и info)
+   ========================================= */
+
+/* 1. Задаем только фон, убираем полоску */
+.callout[data-callout="note"],
+.callout[data-callout="info"] {
+    background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.1) !important;
+    border-left: none !important; /* УБРАЛИ ПОЛОСКУ */
+}
+
+/* 2. Красим заголовок и иконку в нужный цвет */
+.callout[data-callout="note"] .callout-title,
+.callout[data-callout="info"] .callout-title {
+    color: hsl(var(--accent-h), var(--accent-s), var(--accent-l)) !important;
+}
+
+.callout[data-callout="note"] .callout-icon svg,
+.callout[data-callout="info"] .callout-icon svg {
+    stroke: hsl(var(--accent-h), var(--accent-s), var(--accent-l)) !important;
+}
+
+/* 3. Фикс для выделения и кода внутри note/info */
+.callout[data-callout="note"] mark,
+.callout[data-callout="info"] mark,
+.callout[data-callout="note"] code,
+.callout[data-callout="info"] code {
+    background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.2) !important;
+    color: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 20%)) !important;
+}
+
+/* =========================================
+   ФАЙЛЫ И ИНТЕРФЕЙС
+   ========================================= */
+/* Кастомизация иконок файлов PDF */
 .nav-file-title[data-path$=".pdf"] .nav-file-tag {
 	background-color: #ef5350;
 	color: white;
+	border-radius: 2px;
+	font-weight: bold;
 }
 
-/* Какой-то календарь, даже не понятно для чего он нужен */
+/* Календарь */
 #calendar-container {
 	--color-background-heading: transparent;
 	--color-background-day: transparent;
@@ -104,27 +171,32 @@ body {
 	--color-text-weeknum: var(--text-muted);
 }
 
+/* Убираем полоски у активных вкладок */
 .workspace-tab-header.is-active::before,
 .workspace-tab-header.is-active::after {
 	display: none;
 }
 
+/* =========================================
+   ФИКСЫ ДЛЯ ИКОНОК И ИЗОБРАЖЕНИЙ
+   ========================================= */
+/* 
+   ВАЖНО: Закомментировал жесткие настройки SVG. 
+   Если оставить stroke-linecap: square, все иконки в интерфейсе 
+   станут квадратными и уродливыми.
+*/
 svg * {
-	stroke-linecap: square;
-	stroke-linejoin: miter;
-	/* ---------------------------------------
-	Скругления почему то плохо работают и все 
-	SVG имеют квадратный дизайн с этими фичами 
-	--------------------------------------- */
+	/* stroke-linecap: square; */
+	/* stroke-linejoin: miter; */
 	/* rx: 0; */
 	/* ry: 0; */
 }
 
 img {
-	/* Решил убрать скругления т.к. не приносят пользы вовсе */
 	border-radius: 0px; 
 }
 
+/* Настройки меню */
 .menu {
 	padding: var(--size-2-1);
 }
@@ -135,4 +207,24 @@ img {
 
 .menu-separator {
 	margin: var(--size-2-1) calc(var(--size-2-1) * -1);
+}
+
+/* =========================================
+   МОБИЛЬНАЯ ВЕРСИЯ (Safe Area)
+   ========================================= */
+body.is-mobile .app-container,
+body.is-mobile .modal-container,
+body.is-mobile .workspace {
+	padding-bottom: 0px !important;
+	margin-bottom: 0px !important;
+}
+
+body.is-mobile .modal-header,
+body.is-mobile .view-header,
+body.is-mobile .app-container {
+	padding-top: 0px !important;
+}
+
+body.is-mobile .modal {
+	padding-top: 15px !important;
 }
